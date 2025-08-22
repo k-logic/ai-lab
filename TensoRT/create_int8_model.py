@@ -114,6 +114,7 @@ def build_int8_engine(onnx_path, calib, engine_file="model_int8.engine"):
     config.set_flag(trt.BuilderFlag.INT8)
     # 入出力をflot16に変換したい場合
     # config.set_flag(trt.BuilderFlag.FP16)
+    # config.set_flag(trt.BuilderFlag.FP16)
 
     if hasattr(config, "set_int8_calibrator"):
         config.set_int8_calibrator(calib)
