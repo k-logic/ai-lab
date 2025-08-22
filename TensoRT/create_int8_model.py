@@ -1,3 +1,8 @@
+```
+必要なモジュールをインスールする場合、pipを最新にしておく
+python3 -m pip install --upgrade pip setuptools wheel
+```
+
 import tensorrt as trt
 import pycuda.driver as cuda
 import pycuda.autoinit
@@ -117,9 +122,6 @@ def build_int8_engine(onnx_path, calib, engine_file="model_int8.engine"):
         config.set_int8_calibrator(calib)
     else:
         config.int8_calibrator = calib
-        
-    # 入出力をflot16に変換したい場合
-    # config.set_flag(trt.BuilderFlag.FP16)
 
     serialized_engine = builder.build_serialized_network(network, config)
     if serialized_engine is None:
